@@ -1,0 +1,80 @@
+{% load static %}
+<html lang="ru">
+
+<head>
+  <title>Chat screen</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'chat/main.css' %}">
+  <!-- Font Awesome File -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static 'chat/js-snackbar.css' %}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript"> window.CSRF_TOKEN = "{{ csrf_token }}"; </script>
+  <script src="{% static 'chat/js-snackbar.js' %}"></script>
+  <script src="{% static 'chat/main.js' %}"></script>
+</head>
+
+<body>
+
+  <div id="my-div" data-user-id="{{ user.id }}"></div>
+
+  <div class="container app">
+    <div class="row app-one">
+
+
+      <!-- New Message Sidebar End -->
+
+      <!-- Conversation Start -->
+      <div class="col-sm-12 conversation">
+        <!-- Heading -->
+        <div class="row heading">
+          <div class="col-sm-8 col-xs-7 heading-name">
+            <a class="heading-name-meta">Техническая поддержка
+            </a>
+            <span id="number_chat"></span>
+          </div>
+          <div class="col-sm-0 col-xs-2  heading-dot pull-right">
+            
+            <select class="select" name="problem" id="selectud">
+                <option>Выбор темы</option>
+                <option>Сервер</option>
+                <option>Сайт</option>
+                <option>Другое</option>
+            </select>
+            </div>
+        </div>
+        <!-- Heading End -->
+
+        <!-- Message Box -->
+        <div class="row message" id="conversation">
+        </div>
+        <!-- Message Box End -->
+
+        <!-- Reply Box -->
+        <div class="row reply">
+          <form action="/" id="formas" method="post">
+            {% csrf_token %}
+            <input type="text" id="messages_chat" name="messages_chat">
+            <input type="text" id="messages_user" name="messages_user">
+            <div class="col-sm-9 col-xs-9 reply-main">
+              <textarea class="form-control" rows="1" id="comment" name="messages_text"></textarea>
+            </div>
+            <div class="col-sm-1 col-xs-1 reply-send" id="reply-send">
+              <i class="fa fa-send fa-2x" aria-hidden="true"></i>
+            </div>
+          </form>
+        </div>
+        <!-- Reply Box End -->
+      </div>
+      <!-- Conversation End -->
+    </div>
+    <!-- App One End -->
+  </div>
+
+  <!-- App End -->
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+{% load static %}
+<html lang="ru">
+
+<head>
+    <title>Unread Messages</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'chat/main.css' %}">
+    <!-- Font Awesome File -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{% static 'chat/chat.js' %}"></script>
+</head>
+
+<body>
+
+    <div id="my-div" data-user-id="{{ user.id }}"></div>
+
+    <div class="container app">
+        <div class="row app-one">
+
+            <div class="col-sm-4 side">
+                <div class="side-one">
+                    <!-- Heading -->
+                    <div class="row heading">
+                        <div class="col-sm-1 col-xs-1  heading-dot  pull-right">
+                            <i class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
+                        </div>
+                        <div class="col-sm-2 col-xs-2 heading-compose  pull-right">
+                            <i class="fa fa-comments fa-2x  pull-right" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <!-- Heading End -->
+
+                    <!-- SearchBox -->
+                    <div class="row searchBox">
+                        <div class="col-sm-12 searchBox-inner">
+                            <div class="form-group has-feedback">
+                                <input id="searchText" type="text" class="form-control" name="searchText" placeholder="Search">
+                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Search Box End -->
+                    <!-- sideBar -->
+                    <div class="row sideBar" id="chats">
+                        {% comment %} <div class="row sideBar-body">
+                            <div class="col-sm-9 col-xs-9 sideBar-main">
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-8 sideBar-name">
+                                        <span class="name-meta">John Doe
+                                        </span>
+                                        <span class="label label-danger">4</span>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
+                                        <span class="time-meta pull-right">18:18
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> {% endcomment %}
+                    </div>
+                    <!-- Sidebar End -->
+                </div>
+                <!-- Sidebar End -->
+            </div>
+
+
+            <!-- New Message Sidebar End -->
+
+            <!-- Conversation Start -->
+            <div class="col-sm-8 conversation">
+                <!-- Heading -->
+                <div class="row heading">
+                    <div class="col-sm-8 col-xs-7 heading-name">
+                        <a class="heading-name-meta" id="chat-name">
+                        </a>
+                        <span id="tags-1"></span>
+                    </div>
+                    <div class="col-sm-1 col-xs-1  heading-dot pull-right">
+                        <i class="fa fa-ellipsis-v fa-2x  pull-right"></i>
+                    </div>
+                </div>
+                <!-- Heading End -->
+
+                <!-- Message Box -->
+                <div class="row message" id="conversation">
+                </div>
+                <!-- Message Box End -->
+
+                <!-- Reply Box -->
+                <div class="row reply">
+                    <div class="col-sm-9 col-xs-9 reply-main">
+                        <textarea class="form-control" rows="1" id="comment" name="messages_text"></textarea>
+                    </div>
+                    <div class="col-sm-1 col-xs-1 reply-send" id="send">
+                        <i class="fa fa-send fa-2x" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <!-- Reply Box End -->
+            </div>
+            <!-- Conversation End -->
+        </div>
+        <!-- App One End -->
+    </div>
+
+    <!-- App End -->
+</body>
+
+</html>
